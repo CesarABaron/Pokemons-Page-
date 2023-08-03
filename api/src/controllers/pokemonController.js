@@ -18,15 +18,15 @@ const getPokemonsByName = async (name) => {
   }
 
   let maxPokemon = 100;
-  let pokemons = [];
+  let pokemonsPromise = [];
   for (let i = 1; i <= maxPokemon; i++) {
-    const apiResponse = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/${i}`
-    );
-    pokemons.push(apiResponse.data);
+    pokemonsPromise.push(axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`));
   }
 
-  const apiResponseFiltered = Validate(pokemons);
+  const pokemons = await Promise.all(pokemonsPromise);
+  const pokemonsfiltered = pokemons.map((poke) => poke.data);
+
+  const apiResponseFiltered = Validate(pokemonsfiltered);
 
   const pokemonFilteredApi = apiResponseFiltered.filter((pke) =>
     pke.name.includes(name.toLowerCase())

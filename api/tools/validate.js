@@ -4,8 +4,12 @@ const Validate = (array) => {
       return null;
     }
     const health = pok.stats.find((poke) => poke.stat.name === "hp").base_stat;
-    const attack = pok.stats.find((poke) => poke.stat.name === "attack").base_stat;
-    const defense = pok.stats.find((poke) => poke.stat.name === "defense").base_stat;
+    const attack = pok.stats.find(
+      (poke) => poke.stat.name === "attack"
+    ).base_stat;
+    const defense = pok.stats.find(
+      (poke) => poke.stat.name === "defense"
+    ).base_stat;
     const typesArray = pok.types;
     const types = typesArray.map((x) => {
       return { name: x.type.name };
@@ -22,7 +26,7 @@ const Validate = (array) => {
     };
   });
 
-  // colocar renderizado condicional !!
+  // colocar renderizado condicional en caso de no haber la inf para que no salga null !!
 
   return clear;
 };
