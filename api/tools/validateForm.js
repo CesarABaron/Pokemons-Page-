@@ -1,10 +1,11 @@
-const { Type } = require("../src/db");
-const { DataTypes } = require("sequelize");
+const { Type, Pokemon } = require("../src/db");
 
 const validateForm = async (req, res, next) => {
   const { name, health, image, attack, defense, type } = req.body;
 
-  if (!name || typeof name !== "string")
+  const existPokemon = await Pokemon.findOne({ where: { name: name } });
+
+  if (!name || typeof name !== "string" || existPokemon)
     return res.status(400).json({
       error: " El nombre debe almenos tener una letra o ser de tipo String",
     });
@@ -25,7 +26,7 @@ const validateForm = async (req, res, next) => {
     return res
       .status(400)
       .json({ error: "la defensa debe tener almenos un dijito" });
-  if (type.length === 0 || !Array.isArray(type))
+  if (type.length === 0 || !Array.isArray(type) || type.length > 2)
     return res.status(400).json({ error: "Debe tener almenos un tipo" });
 
   for (let i = 0; i < type.length; i++) {

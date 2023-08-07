@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "PocketMonk-15ze" ;
+    src: url(../../assets/fonts/PocketMonk-15ze.ttf);
+}
+
+
+.landing{
+    /* background-image: url(../../assets/images/landingPage.jpg); */
+    background-image: url(../../assets/images/landingPage.jpg);
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        overflow-y: auto;
+        background-size: cover;
+        --color-text: #ffffff;
+            --color-background: #ff135a;
+            --color-outline: #ff145b80;
+            --color-shadow: #00000080;
+  
+}
+

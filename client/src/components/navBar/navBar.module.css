@@ -1,0 +1,28 @@
+.navLink {
+    color: rgb(7, 7, 7);
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 5vh;
+}
+
+
+.NavBar{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 10vh;
+  
+    
+    
+    
+}
+
+
+/* display: flex;
+justify-content: end;
+justify-content: center;
+align-items: center;
+background-color: rgb(236, 226, 226);
+width: 70vh;
+padding: 1vh; */

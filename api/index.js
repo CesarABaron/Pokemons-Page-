@@ -17,14 +17,16 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
-const {getTypesController} = require("../api/src/controllers/typesController.js")
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
+const {
+  getTypesController,
+} = require("../api/src/controllers/typesController.js");
 
 // Syncing all the models at once.
 conn.sync({ alter: true }).then(async () => {
-  await getTypesController()
+  await getTypesController();
   server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });

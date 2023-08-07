@@ -6,7 +6,7 @@ const axios = require("axios");
 
 const getPokemonsByName = async (name) => {
   const getDbPokemonRaw = await Pokemon.findAll({
-    where: { name: { [Op.iLike]: `%${name}%` } },
+    where: { name: { [Op.like]: `${name}` } },
     include: { model: Type, attributes: ["name"], through: { attributes: [] } },
   });
 
@@ -28,8 +28,8 @@ const getPokemonsByName = async (name) => {
 
   const apiResponseFiltered = Validate(pokemonsfiltered);
 
-  const pokemonFilteredApi = apiResponseFiltered.filter((pke) =>
-    pke.name.includes(name.toLowerCase())
+  const pokemonFilteredApi = apiResponseFiltered.filter(
+    (pke) => pke.name === name.toLowerCase()
   );
 
   const response = [...getDbPokemon, ...pokemonFilteredApi];
@@ -38,10 +38,16 @@ const getPokemonsByName = async (name) => {
 };
 
 const getPokemonByIdController = async (id) => {
-  if (id.length > 4) {
-    const dbInformation = await Pokemon.findByPk(id);
-    return dbInformation;
-  } else {
+  if (id.length > 5) {
+    const dbInformation = await Pokemon.findByPk(id, {
+      include: {
+        model: Type,
+        attributes: ["name"],
+        through: { attributes: [] },
+      },
+    });
+    return [dbInformation];
+  } else if (id < 1280) {
     const apiPokemonRaw = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${id}`
     );
@@ -49,6 +55,8 @@ const getPokemonByIdController = async (id) => {
     pokemon.push(apiPokemonRaw.data);
 
     return Validate(pokemon);
+  } else {
+    throw Error("Pokemon not Found");
   }
 };
 
@@ -57,7 +65,7 @@ const getAllPokemonController = async () => {
     include: { model: Type, attributes: ["name"], through: { attributes: [] } },
   });
 
-  let maxPokemon = 100;
+  let maxPokemon = 200;
   let pokemons = [];
   for (let i = 1; i <= maxPokemon; i++) {
     pokemons.push(axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`));
@@ -73,7 +81,6 @@ const getAllPokemonController = async () => {
 
 const postPokemonController = async (pokemon) => {
   const result = await Pokemon.create(pokemon);
-
   const types = await Type.findAll({ where: { name: pokemon.type } });
 
   result.addType(types);

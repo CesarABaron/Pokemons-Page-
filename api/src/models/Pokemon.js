@@ -7,6 +7,7 @@ module.exports = (sequelize) => {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
 
     id: {
@@ -34,6 +35,12 @@ module.exports = (sequelize) => {
     defense: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    },
+
+    createdInDb: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: true,
     },
   });
 };

@@ -23,6 +23,7 @@ const Validate = (array) => {
       attack: attack,
       defense: defense,
       types: types,
+      createdInDb: false,
     };
   });
 
