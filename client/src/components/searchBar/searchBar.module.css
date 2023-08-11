@@ -1,4 +1,40 @@
-.SearchBar{
-  background-color: black;
-  margin-right: 10vh;
+
+.button{background-color: #B52B25;
+  background-size: cover;
+  height: 33px;
+  width: 39px;
+ background-image: url(../../assets/images/inconsHd/lupa.png);
+  margin-top: 1px;
+  }
+
+
+
+
+.input{
+ 
+  background-color: rgb(250, 201, 201);
+outline: none;
+    border: 1px solid #B52B25;
+  height: 29px;
+  width: 270px;
+
 }
+
+
+select{
+  margin: 8px;
+  background-color: rgb(250, 201, 201);
+  padding: 2px;
+  
+}
+
+.SearchBar{
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+
+
+
+
+

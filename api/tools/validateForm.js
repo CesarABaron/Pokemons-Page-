@@ -5,19 +5,35 @@ const validateForm = async (req, res, next) => {
 
   const existPokemon = await Pokemon.findOne({ where: { name: name } });
 
-  if (!name || typeof name !== "string" || existPokemon)
+  if (!name) {
     return res.status(400).json({
       error: " El nombre debe almenos tener una letra o ser de tipo String",
     });
+  } else if (typeof name !== "string") {
+    return res.status(400).json({
+      error: "The name provided must be a string",
+    });
+  } else if (existPokemon) {
+    return res.status(400).json({
+      error: "The name allready exists",
+    });
+  }
 
   if (!health || typeof health !== "number")
     return res
       .status(400)
       .json({ error: "health debe tener almenos un dijito" });
   if (!image)
-    return res
-      .status(400)
-      .json({ error: "imagen Debe almenos tener una letra" });
+    return res.status(400).json({ error: "Debes almenos subir una imagen" });
+  const isUrlValid =
+    /^(https?:\/\/)?(www\.)?[a-z0-9\-\.\/_]+\.(png|jpg|jpeg)$/i.test(image);
+  if (!isUrlValid) {
+    return res.status(400).json({
+      error:
+        "El enlace proporcionado no es válido o no apunta a una imagen PNG o JPG",
+    });
+  }
+
   if (!attack || typeof attack !== "number")
     return res
       .status(400)
@@ -33,7 +49,7 @@ const validateForm = async (req, res, next) => {
     const validator = await Type.findOne({ where: { name: type[i] } });
 
     if (!validator) {
-      return res.status(400).json({ error: "Debe tener almenos un tipo" });
+      return res.status(400).json({ error: "El tipo de pokemon no existe" });
     }
   }
 

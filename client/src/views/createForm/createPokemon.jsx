@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { postPokemon } from "../../redux/actions";
-import { useNavigate } from "react-router-dom";
+
+import style from "./createPokemon.module.css";
 
 const CreatePokemon = () => {
-  // const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -16,7 +16,7 @@ const CreatePokemon = () => {
     type: [],
   });
 
-  const [errors, setErros] = useState({
+  const [errors, setErrors] = useState({
     name: "",
     image: "",
     health: "",
@@ -24,6 +24,8 @@ const CreatePokemon = () => {
     defense: "",
     type: "",
   });
+
+  console.log(errors);
 
   const handleChange = (e) => {
     if (e.target.name === "type") {
@@ -49,8 +51,16 @@ const CreatePokemon = () => {
     } else {
       setInput({ ...input, [e.target.name]: e.target.value });
 
-      setErros({ [e.target.name]: e.target.value });
+      Validate({ [e.target.name]: e.target.value });
     }
+  };
+
+  const Validate = (input) => {
+    if (!input.name) {
+      setErrors({ ...errors, name: "" });
+    }
+    setErrors({ ...errors, name: "invalid name" });
+    return;
   };
 
   const handleSubmit = (e) => {
@@ -68,199 +78,223 @@ const CreatePokemon = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input value={input.name} onChange={handleChange} name="name"></input>
+    <div className={style.container}>
+      <div className={style.form}>
+        <form onSubmit={handleSubmit}>
+          <div className={style.inputsContainer}>
+            <label>Name</label>
+            <input
+              value={input.name}
+              onChange={handleChange}
+              name="name"
+            ></input>
 
-        <label>Image</label>
-        <input value={input.image} onChange={handleChange} name="image"></input>
+            <label>Image</label>
+            <input
+              value={input.image}
+              onChange={handleChange}
+              name="image"
+            ></input>
+            {!errors.image ? null : <p>error </p>}
 
-        <label>health</label>
-        <input
-          onChange={handleChange}
-          value={input.health}
-          name="health"
-        ></input>
+            <label>health</label>
+            <input
+              onChange={handleChange}
+              value={input.health}
+              name="health"
+            ></input>
 
-        <label>attack</label>
-        <input
-          value={input.attack}
-          onChange={handleChange}
-          name="attack"
-        ></input>
+            <label>attack</label>
+            <input
+              value={input.attack}
+              onChange={handleChange}
+              name="attack"
+            ></input>
 
-        <label>defense</label>
-        <input
-          value={input.defense}
-          onChange={handleChange}
-          name="defense"
-        ></input>
+            <label>defense</label>
+            <input
+              value={input.defense}
+              onChange={handleChange}
+              name="defense"
+            ></input>
+          </div>
 
-        <h1>type</h1>
-        <br></br>
+          <h1>type</h1>
+          <div className={style.allTypes}>
+            <div className={style.div1}>
+              <label>Water</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="water"
+              ></input>
 
-        <label>water</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="water"
-        ></input>
+              <label>Fire</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="fire"
+              ></input>
 
-        <label>fire</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="fire"
-        ></input>
+              <label>Normal</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="normal"
+              ></input>
 
-        <label>normal</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="normal"
-        ></input>
+              <label>Fighting</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="fighting"
+              ></input>
+            </div>
 
-        <label>fighting</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="fighting"
-        ></input>
+            <div className={style.div2}>
+              <label>Flying</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="flying"
+              ></input>
 
-        <label>flying</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="flying"
-        ></input>
+              <label>Poison</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="poison"
+              ></input>
 
-        <label>poison</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="poison"
-        ></input>
+              <label>Ground</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="ground"
+              ></input>
 
-        <label>ground</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="ground"
-        ></input>
+              <label>Rock</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="rock"
+              ></input>
+            </div>
 
-        <label>rock</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="rock"
-        ></input>
+            <div className={style.div3}>
+              <label>Bug</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="bug"
+              ></input>
 
-        <label>bug</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="bug"
-        ></input>
+              <label>Ghost</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="ghost"
+              ></input>
 
-        <label>ghost</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="ghost"
-        ></input>
+              <label>Steel</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="steel"
+              ></input>
 
-        <label>steel</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="steel"
-        ></input>
+              <label>Grass</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="grass"
+              ></input>
+            </div>
 
-        <label>grass</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="grass"
-        ></input>
+            <div className={style.div4}>
+              <label>Electric</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="electric"
+              ></input>
 
-        <label>electric</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="electric"
-        ></input>
+              <label>Psychic</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="psychic"
+              ></input>
 
-        <label>psychic</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="psychic"
-        ></input>
+              <label>Ice</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="ice"
+              ></input>
 
-        <label>ice</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="ice"
-        ></input>
+              <label>Dragon</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="dragon"
+              ></input>
+            </div>
+            <div className={style.div5}>
+              <label>Dark</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="dark"
+              ></input>
 
-        <label>dragon</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="dragon"
-        ></input>
+              <label>Fairy</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="fairy"
+              ></input>
 
-        <label>dark</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="dark"
-        ></input>
+              <label>Unknown</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="unknown"
+              ></input>
 
-        <label>fairy</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="fairy"
-        ></input>
-
-        <label>unknown</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="unknown"
-        ></input>
-
-        <label>shadow</label>
-        <input
-          onChange={handleChange}
-          name="type"
-          type="checkbox"
-          value="shadow"
-        ></input>
-
-        <input type="submit" />
+              <label>Shadow</label>
+              <input
+                onChange={handleChange}
+                name="type"
+                type="checkbox"
+                value="shadow"
+              ></input>
+            </div>
+          </div>
+          <input type="submit" />
+        </form>
+      </div>
+      <form className={style.form2}>
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
       </form>
     </div>
   );

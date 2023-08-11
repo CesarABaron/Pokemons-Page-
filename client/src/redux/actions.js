@@ -4,6 +4,7 @@ export const GETALLPOKEMONS = "GETALLPOKEMONS";
 export const GETPOKEMONBYNAME = "GETPOKEMONBYNAME";
 export const POSTPOKEMON = "POSTPOKEMON";
 export const FILTERPOKEMON = "FILTERPOKEMON";
+export const PAGINATEPOKEMON = "PAGINATEPOKEMON";
 
 export const getAllPokemons = () => {
   return async (dispatch) => {
@@ -50,6 +51,7 @@ export const postPokemon = (pokemon) => {
 };
 
 export const filterPokemon = (key, value, body) => {
+  console.log("key", key, "value", value);
   return async (dispatch) => {
     const params = { [key]: value };
     try {
@@ -63,5 +65,15 @@ export const filterPokemon = (key, value, body) => {
         payload: response.data,
       });
     } catch (error) {}
+  };
+};
+
+export const paginatePokemon = (paginado) => {
+  console.log(paginado);
+  return (dispatch) => {
+    return dispatch({
+      type: "PAGINATEPOKEMON",
+      payload: paginado,
+    });
   };
 };

@@ -14,44 +14,48 @@ const Filter = () => {
 
   return (
     <div className={style.filtros}>
-      Filtros:
-      <select name="type" onChange={handleChange}>
-        <option value="getAll">Por tipo</option>
-        <option value="fire">fire </option>
-        <option value="normal">normal</option>
-        <option value="fighting">fighting</option>
-        <option value="flying">flying</option>
-        <option value="poison">poison</option>
-        <option value="ground">ground</option>
-        <option value="rock">rock </option>
-        <option value="bug">bug</option>
-        <option value="ghost">ghost</option>
-        <option value="water">water</option>
-        <option value="grass">grass</option>
-        <option value="electric">electric</option>
-        <option value="psychic">psychic</option>
-        <option value="ice">ice</option>
-        <option value="dragon">dragon</option>
-        <option value="dark">dark</option>
-        <option value="fairy">fairy</option>
-        <option value="unknown">unknown</option>
-        <option value="shadow">shadow</option>
-        <option value="steel">steel</option>
+      Sort By
+      <select className={style.select} name="type" onChange={handleChange}>
+        <option value="bug">Bug</option>
+        <option value="dark">Dark</option>
+        <option value="dragon">Dragon</option>
+        <option value="electric">Electric</option>
+        <option value="fairy">Fairy</option>
+        <option value="fire">Fire</option>
+        <option value="fighting">Fighting</option>
+        <option value="flying">Flying</option>
+        <option value="ghost">Ghost</option>
+        <option value="grass">Grass</option>
+        <option value="ground">Ground</option>
+        <option value="ice">Ice</option>
+        <option value="normal">Normal</option>
+        <option value="poison">Poison</option>
+        <option value="psychic">Psychic</option>
+        <option value="rock">Rock </option>
+        <option value="water">Water</option>
+        <option value="getAll">Type</option>
+        <option value="unknown">Unknown</option>
+        <option value="shadow">Shadow</option>
+        <option value="steel">Steel</option>
       </select>
-      <select name="attack" onChange={handleChange}>
-        <option> Filtrar por ataque </option>
+      <select className={style.select} name="attack" onChange={handleChange}>
+        <option> Attack </option>
         <option value="ascendente">Attack ⇑ </option>
         <option value="descendente">Attack ⇓</option>
       </select>
-      <select name="alphabetical" onChange={handleChange}>
-        <option> Filtrar por letras </option>
-        <option value="AZ">A - Z ⇓ </option>
-        <option value="ZA">Z - A ⇓</option>
+      <select
+        className={style.select}
+        name="alphabetical"
+        onChange={handleChange}
+      >
+        <option> Alphabetical </option>
+        <option value="AZ">Alphabetical ⇓ </option>
+        <option value="ZA">Alphabetical ⇑</option>
       </select>
-      <select onChange={handleChange} name="createdIn">
-        <option> Creado en </option>
-        <option value="DB">base de datos</option>
-        <option value="API">api </option>
+      <select className={style.select} onChange={handleChange} name="createdIn">
+        <option> Created in </option>
+        <option value="DB">Data Base</option>
+        <option value="API">Api</option>
       </select>
     </div>
   );

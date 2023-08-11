@@ -65,7 +65,7 @@ const getAllPokemonController = async () => {
     include: { model: Type, attributes: ["name"], through: { attributes: [] } },
   });
 
-  let maxPokemon = 200;
+  let maxPokemon = 100;
   let pokemons = [];
   for (let i = 1; i <= maxPokemon; i++) {
     pokemons.push(axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`));

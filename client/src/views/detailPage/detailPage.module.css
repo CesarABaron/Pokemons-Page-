@@ -1,0 +1,118 @@
+.contenedor{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    position: fixed;
+    
+    align-items: center;
+    background-image: url(../../assets/images/backgroundDetail.jpg);
+    background-size: cover;
+   
+    
+}
+
+
+
+.card{
+    
+    border-radius: 30px;
+   background-color: antiquewhite;
+   margin-left: 300px;
+    padding: 10px;
+    height: 600px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 10px 1px black;
+    margin-bottom: 80px;
+}
+
+.id{font-family: inherit;
+font-size: 8px;}
+
+.name {
+    display: flex;
+    justify-content: space-between;
+    font-family: inherit;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #c03028;
+    height: 50px;
+    width: 350px;
+    align-items: center;
+    margin-top: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+}
+
+.name h1 {
+    font-family: inherit;
+    color: aliceblue;
+    font-size: 50px;
+}
+
+.imageCard{
+    margin-top: 15px;
+   
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 180px;
+    width: 250px;
+    margin-bottom: 10px;
+    
+   
+}
+
+.imageCard img{
+    height: 240px;
+}
+
+
+.iconContainer{
+    margin-top: 15px;
+    display: flex;
+   justify-content: space-between;
+ 
+  
+    
+}
+
+
+.iconContainer img {
+    height: 110px;
+    margin-bottom: 30px;
+  
+}
+
+
+
+.points img{
+    height: 40px;
+}
+
+.points h1 {
+    color: aliceblue;
+}
+
+.points{
+    margin-left: -20px;
+    margin-top: 30px;
+    display: flex;
+background-color: #c03028;
+border-radius: 0px 50px 50px 0px ;
+    align-items: center;
+    justify-content: space-around;
+    height: 60px;
+    width: 400px;
+  
+}
+
+
+.fire{
+    background-color: black;
+}

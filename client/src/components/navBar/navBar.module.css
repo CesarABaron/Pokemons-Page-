@@ -1,28 +1,44 @@
+@font-face {
+    font-family: 'Open Sans';
+    src: url("../../assets/fonts/PocketMonk-15ze.ttf") format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+.pokemon{font-family:PocketMonk-15ze;
+font-size: 55px;
+color: #B52B25;}
+
+
 .navLink {
-    color: rgb(7, 7, 7);
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: bold;
-    margin-right: 5vh;
+    font-size: 12px;
+    background-color: #B52B25;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+  
+}
+
+.navLink :hover{
+color: rgb(51, 2, 2);
+
+
 }
 
 
 .NavBar{
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    margin-right: 10vh;
+    margin-right: 30px;
+    height: 70px;
   
-    
-    
-    
 }
 
-
-/* display: flex;
-justify-content: end;
-justify-content: center;
-align-items: center;
-background-color: rgb(236, 226, 226);
-width: 70vh;
-padding: 1vh; */
+.pokemon{
+    margin-left: 50px;
+    
+}
