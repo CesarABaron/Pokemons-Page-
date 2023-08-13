@@ -17,7 +17,7 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route exact path="/home" element={<HomePage />} />
         <Route path="/detail/:id" element={<DetailPage />} />
-        <Route path="/create" element={<CreatePokemon />} />
+        <Route path="/create/:id" element={<CreatePokemon />} />
       </Routes>
     </div>
   );

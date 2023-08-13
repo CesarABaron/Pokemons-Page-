@@ -4,12 +4,13 @@ import {
   POSTPOKEMON,
   FILTERPOKEMON,
   PAGINATEPOKEMON,
+  DELETEPOKEMON,
+  UPDATEPOKEMON,
 } from "../redux/actions";
 
 let inicialState = {
   pokemons: [],
   pokemonsViews2: [],
-  pokemonsFiltered: [],
 };
 
 function rootReducer(state = inicialState, actions) {
@@ -41,6 +42,16 @@ function rootReducer(state = inicialState, actions) {
           actions.payload.num1,
           actions.payload.num2
         ),
+      };
+
+    case DELETEPOKEMON:
+      return {
+        ...state,
+      };
+
+    case UPDATEPOKEMON:
+      return {
+        ...state,
       };
 
     default:

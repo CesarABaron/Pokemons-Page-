@@ -72,6 +72,7 @@ const Card = (props) => {
           {props.types.map((type) => {
             return (
               <img
+                key={type.name}
                 className={style.type}
                 src={imageMappingIcon[type.name]}
                 alt=""

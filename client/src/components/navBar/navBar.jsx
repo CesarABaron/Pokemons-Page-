@@ -25,7 +25,7 @@ const NavBar = () => {
       </h1>
       {location.pathname === "/home" && <SearchBar />}
       {location.pathname === "/home" && (
-        <NavLink className={style.navLink} to="/create">
+        <NavLink className={style.navLink} to="/create/id">
           <p> Create Pokemon</p>
         </NavLink>
       )}

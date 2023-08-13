@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import { deletePokemon } from "../../redux/actions";
 import style from "./detailPage.module.css";
 import rockImage from "../../assets/images/inconsHd/rock.png";
 import bugImage from "../../assets/images/inconsHd/bug.png";
@@ -23,6 +24,7 @@ import waterImage from "../../assets/images/inconsHd/water.png";
 import healt from "../../assets/images/inconsHd/life.png";
 import sword from "../../assets/images/inconsHd/sword.png";
 import shield from "../../assets/images/inconsHd/shield.png";
+import { useDispatch } from "react-redux";
 
 const imageMappingIcon = {
   rock: rockImage,
@@ -46,10 +48,12 @@ const imageMappingIcon = {
 };
 
 const DetailPage = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
+  const dispacth = useDispatch();
 
   const [pokemons, setPokemons] = useState([]);
-  console.log(pokemons);
+
   useEffect(() => {
     try {
       const axiosGet = async () => {
@@ -66,18 +70,26 @@ const DetailPage = () => {
     return setPokemons([]);
   }, [id]);
 
+  const deletePokemonHandler = () => {
+    dispacth(deletePokemon(id));
+    navigate("/home");
+  };
+
   return (
     <div className={style.contenedor}>
       <div>
         <div className={style.card}>
           <div className={style.id}>
             {" "}
-            <h1>{pokemons[0]?.id}</h1>
+            {pokemons && <h1>{pokemons[0]?.id}</h1>}
           </div>
           <div className={style.name}>
-            <h1>
-              {pokemons[0]?.name[0].toUpperCase() + pokemons[0]?.name.slice(1)}
-            </h1>
+            {pokemons.length > 0 && (
+              <h1>
+                {pokemons[0]?.name[0].toUpperCase() +
+                  pokemons[0]?.name.slice(1)}
+              </h1>
+            )}
           </div>
           <div className={style.imageCard}>
             <img src={pokemons[0]?.image} alt="" />
@@ -89,13 +101,14 @@ const DetailPage = () => {
             <img src={shield} alt="" />
             <h1>{pokemons[0]?.defense}</h1>
             <img src={healt} alt="" />
-            <h1>{pokemons[0]?.hp}</h1>
+            <h1>{pokemons[0]?.health}</h1>
           </div>
 
           <div className={style.iconContainer}>
             {pokemons[0]?.types.map((type) => {
               return (
                 <img
+                  key={type.name}
                   className={style.icon}
                   src={imageMappingIcon[type.name]}
                   alt=""
@@ -103,6 +116,14 @@ const DetailPage = () => {
               );
             })}
           </div>
+          {pokemons[0]?.id.length > 3 && (
+            <div className={style.delete}>
+              <button onClick={deletePokemonHandler}>Delete</button>
+              <Link to={`/create/${id}`}>
+                <button>Update</button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

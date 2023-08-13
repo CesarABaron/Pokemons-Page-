@@ -1,18 +1,15 @@
 .contenedor{
+background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
     height: 100%;
     width: 100%;
-    display: flex;
-    justify-content: start;
-    position: fixed;
-    
-    align-items: center;
     background-image: url(../../assets/images/backgroundDetail.jpg);
-    background-size: cover;
-   
+    
+    
+
     
 }
-
-
 
 .card{
     
@@ -20,7 +17,7 @@
    background-color: antiquewhite;
    margin-left: 300px;
     padding: 10px;
-    height: 600px;
+    height: auto;
     width: 400px;
     display: flex;
     flex-direction: column;
@@ -28,10 +25,11 @@
     align-items: center;
     box-shadow: 1px 1px 10px 1px black;
     margin-bottom: 80px;
+    margin-top: 30px;
 }
 
 .id{font-family: inherit;
-font-size: 8px;}
+font-size: 7px;}
 
 .name {
     display: flex;
@@ -43,7 +41,7 @@ font-size: 8px;}
     height: 50px;
     width: 350px;
     align-items: center;
-    margin-top: 30px;
+    margin-top: 10px;
     border-radius: 20px;
     margin-bottom: 30px;
 }
@@ -112,7 +110,3 @@ border-radius: 0px 50px 50px 0px ;
   
 }
 
-
-.fire{
-    background-color: black;
-}

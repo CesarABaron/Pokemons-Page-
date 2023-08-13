@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { postPokemon } from "../../redux/actions";
+import {
+  getAllPokemons,
+  postPokemon,
+  updatePokemon,
+} from "../../redux/actions";
+import { useParams } from "react-router-dom";
 
 import style from "./createPokemon.module.css";
 
 const CreatePokemon = () => {
+  const { id } = useParams();
+  console.log("params", id);
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({
@@ -59,7 +66,7 @@ const CreatePokemon = () => {
 
     if (input.image.length > 0) {
       if (
-        !/^(https?:\/\/)?(www\.)?[a-z0-9\-\.\/_]+\.(png|jpg|jpeg)$/i.test(
+        !/^(https?:\/\/)?(www\.)?[a-z0-9\-_]+\.(png|jpg|jpeg)$/i.test(
           input.image
         )
       ) {
@@ -105,22 +112,35 @@ const CreatePokemon = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (id === "id") {
+      const numericInput = {
+        ...input,
+        attack: parseInt(input.attack),
+        defense: parseInt(input.defense),
+        health: parseInt(input.health),
+      };
+      dispatch(postPokemon(numericInput), getAllPokemons);
+
+      setInput({
+        name: "",
+        image: "",
+        health: "",
+        attack: "",
+        defense: "",
+        type: [],
+      });
+
+      return;
+    }
     const numericInput = {
       ...input,
       attack: parseInt(input.attack),
       defense: parseInt(input.defense),
       health: parseInt(input.health),
     };
-    dispatch(postPokemon(numericInput));
 
-    setInput({
-      name: "",
-      image: "",
-      health: "",
-      attack: "",
-      defense: "",
-      type: [],
-    });
+    dispatch(updatePokemon(id, numericInput));
   };
 
   return (

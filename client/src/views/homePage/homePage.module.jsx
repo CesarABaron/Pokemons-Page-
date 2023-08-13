@@ -11,18 +11,12 @@ let arregloPaginado = {
   isFilter: false,
 };
 
-console.log(arregloPaginado);
 const HomePage = () => {
   const dispatch = useDispatch();
   let pokemons = useSelector((state) => state.pokemons);
   let pokemonsViews2 = useSelector((state) => state.pokemonsViews2);
-  let pokemonsFiltered = useSelector((state) => state.pokemonsFiltered);
 
-  console.log("Arreglo global", pokemons);
-  console.log("vistas home", pokemonsViews2);
-  console.log("filtrado", pokemonsFiltered);
-
-  console.log("paginado", arregloPaginado);
+  console.log("pokemons", pokemons);
 
   const paginadoNext = (e) => {
     e.preventDefault();
