@@ -41,7 +41,7 @@ export const postPokemon = (pokemon) => {
         "http://localhost:3001/pokemons",
         pokemon
       );
-      alert("Se ha creado con exito");
+      alert(response.data.message);
       return dispatch({
         type: "POSTPOKEMON",
         payload: response.data,
@@ -104,13 +104,14 @@ export const updatePokemon = (id, body) => {
         `http://localhost:3001/pokemons/${id}`,
         body
       );
-      console.log(response.data);
+
+      alert("se ha Modificado con exito");
       return dispatch({
         type: "UPDATEPOKEMON",
         payload: response.data,
       });
     } catch (error) {
-      alert("eeeee hay algo mal");
+      alert(error.response.data);
     }
   };
 };

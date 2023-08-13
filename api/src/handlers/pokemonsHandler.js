@@ -21,8 +21,8 @@ const getPokemonsHandlers = async (req, res) => {
 
 const postPokemonHandler = async (req, res) => {
   try {
-    postPokemonController(req.body);
-    return res.status(200).json("Pokemon has been created");
+    const response = await postPokemonController(req.body);
+    return res.status(200).json(response);
   } catch (error) {
     return res.status(400).json(error.message);
   }

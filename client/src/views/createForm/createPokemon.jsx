@@ -66,7 +66,7 @@ const CreatePokemon = () => {
 
     if (input.image.length > 0) {
       if (
-        !/^(https?:\/\/)?(www\.)?[a-z0-9\-_]+\.(png|jpg|jpeg)$/i.test(
+        !/^(https?:\/\/)?(www\.)?[a-z0-9\-\.\/_]+\.(png|jpg|jpeg)$/i.test(
           input.image
         )
       ) {
@@ -148,7 +148,11 @@ const CreatePokemon = () => {
       <div className={style.divForms}>
         <form className={style.Form} onSubmit={handleSubmit}>
           <div className={style.inputsContainer}>
-            <h1 className={style.tittle}> Create Pokémon</h1>
+            {id.length < 5 ? (
+              <h1 className={style.tittle}> Create Pokémon</h1>
+            ) : (
+              <h1 className={style.tittle}> Edit Pokémon</h1>
+            )}
             <label>Name</label>
             <input
               value={input.name}
@@ -380,7 +384,6 @@ const CreatePokemon = () => {
               </div>
             )}
           </div>
-          {input ? null : <div> contenedor </div>}
         </form>
       </div>
     </div>

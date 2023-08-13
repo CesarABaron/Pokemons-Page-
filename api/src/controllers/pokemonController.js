@@ -6,7 +6,7 @@ const axios = require("axios");
 
 const getPokemonsByName = async (name) => {
   const getDbPokemonRaw = await Pokemon.findAll({
-    where: { name: { [Op.like]: `${name}` } },
+    where: { name: { [Op.iLike]: `${name}` } },
     include: { model: Type, attributes: ["name"], through: { attributes: [] } },
   });
 
@@ -82,10 +82,8 @@ const getAllPokemonController = async () => {
 const postPokemonController = async (pokemon) => {
   const result = await Pokemon.create(pokemon);
   const types = await Type.findAll({ where: { name: pokemon.type } });
-
   result.addType(types);
-
-  return result;
+  return { message: "Pokémon Was Created ", data: result };
 };
 
 module.exports = {

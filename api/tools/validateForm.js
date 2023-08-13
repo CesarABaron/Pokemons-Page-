@@ -1,9 +1,12 @@
 const { Type, Pokemon } = require("../src/db");
+const { Op } = require("sequelize");
 
 const validateForm = async (req, res, next) => {
   const { name, health, image, attack, defense, type } = req.body;
 
-  const existPokemon = await Pokemon.findOne({ where: { name: name } });
+  const existPokemon = await Pokemon.findOne({
+    where: { name: { [Op.iLike]: name } },
+  });
 
   if (!name) {
     return res.status(400).json({
