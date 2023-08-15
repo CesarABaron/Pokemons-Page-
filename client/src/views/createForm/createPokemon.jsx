@@ -113,7 +113,7 @@ const CreatePokemon = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (id === "id") {
+    if (!id) {
       const numericInput = {
         ...input,
         attack: parseInt(input.attack),
@@ -148,7 +148,7 @@ const CreatePokemon = () => {
       <div className={style.divForms}>
         <form className={style.Form} onSubmit={handleSubmit}>
           <div className={style.inputsContainer}>
-            {id.length < 5 ? (
+            {!id ? (
               <h1 className={style.tittle}> Create Pokémon</h1>
             ) : (
               <h1 className={style.tittle}> Edit Pokémon</h1>
@@ -391,13 +391,3 @@ const CreatePokemon = () => {
 };
 
 export default CreatePokemon;
-
-// else if (
-//       e.target.name === "health" ||
-//       e.target.name === "attack" ||
-//       e.target.name === "defense"
-//     ) {
-//       const health = Number(e.target.value);
-
-//       setInput({ ...input, [e.target.name]: health });
-//     }

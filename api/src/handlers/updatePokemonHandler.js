@@ -8,7 +8,7 @@ const updatePokemonHandler = async (req, res) => {
 
   try {
     response = await updatePokemonController(id, body);
-    res.status(200).json(response);
+    res.status(200).json(response.message);
   } catch (error) {
     res.status(500).json(error.message);
   }

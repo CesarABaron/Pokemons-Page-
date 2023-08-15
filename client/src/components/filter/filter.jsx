@@ -2,20 +2,38 @@ import { useDispatch } from "react-redux";
 import { filterPokemon } from "../../redux/actions";
 import style from "./filter.module.css";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Filter = () => {
   const dispatch = useDispatch();
 
+  const [selectedValues, setSelectedType] = useState({
+    type: "",
+    attack: "",
+    alphabetical: "",
+    createdIn: "",
+  });
+
   const pokemons = useSelector((state) => state.pokemons);
 
   const handleChange = (e) => {
+    console.log("valie", e.target.value);
+    const selectedValue = e.target.value;
+
+    setSelectedType(selectedValue);
     dispatch(filterPokemon(e.target.name, e.target.value, pokemons));
   };
 
   return (
     <div className={style.filtros}>
       Sort By
-      <select className={style.select} name="type" onChange={handleChange}>
+      <select
+        className={style.select}
+        name="type"
+        onChange={handleChange}
+        value={selectedValues.type}
+      >
+        <option>Type</option>
         <option value="bug">Bug</option>
         <option value="dark">Dark</option>
         <option value="dragon">Dragon</option>
@@ -38,7 +56,12 @@ const Filter = () => {
         <option value="shadow">Shadow</option>
         <option value="steel">Steel</option>
       </select>
-      <select className={style.select} name="attack" onChange={handleChange}>
+      <select
+        className={style.select}
+        name="attack"
+        onChange={handleChange}
+        value={selectedValues.attack}
+      >
         <option> Attack </option>
         <option value="ascendente">Attack ⇑ </option>
         <option value="descendente">Attack ⇓</option>
@@ -47,12 +70,18 @@ const Filter = () => {
         className={style.select}
         name="alphabetical"
         onChange={handleChange}
+        value={selectedValues.alphabetical}
       >
         <option> Alphabetical </option>
         <option value="AZ">Alphabetical ⇓ </option>
         <option value="ZA">Alphabetical ⇑</option>
       </select>
-      <select className={style.select} onChange={handleChange} name="createdIn">
+      <select
+        className={style.select}
+        onChange={handleChange}
+        name="createdIn"
+        value={selectedValues.createdIn}
+      >
         <option> Created in </option>
         <option value="DB">Data Base</option>
         <option value="API">Api</option>

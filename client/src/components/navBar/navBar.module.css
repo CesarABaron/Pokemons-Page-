@@ -22,6 +22,25 @@ color: #B52B25;}
   
 }
 
+.backHome{
+    color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 12px;
+        background-color: #B52B25;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 15px;
+        padding: 12px;
+        
+}
+
+
+ p :hover{
+    color: rgb(51, 2, 2);
+   
+}
+
 .navLink :hover{
 color: rgb(51, 2, 2);
 

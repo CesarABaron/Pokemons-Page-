@@ -83,7 +83,7 @@ const postPokemonController = async (pokemon) => {
   const result = await Pokemon.create(pokemon);
   const types = await Type.findAll({ where: { name: pokemon.type } });
   result.addType(types);
-  return { message: "Pokémon Was Created ", data: result };
+  return { message: ` The pokémon ${pokemon.name} Was Created`, data: result };
 };
 
 module.exports = {

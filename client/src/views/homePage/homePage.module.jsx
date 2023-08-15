@@ -4,6 +4,10 @@ import { useEffect } from "react";
 import { getAllPokemons, paginatePokemon } from "../../redux/actions";
 import Filter from "../../components/filter/filter";
 import style from "./homePage.module.css";
+import { useState } from "react";
+import pikachu from "../../assets/images/pikachu.gif";
+import back from "../../assets/images/back.png";
+import next from "../../assets/images/next.png";
 
 let arregloPaginado = {
   num1: 0,
@@ -15,13 +19,12 @@ const HomePage = () => {
   const dispatch = useDispatch();
   let pokemons = useSelector((state) => state.pokemons);
   let pokemonsViews2 = useSelector((state) => state.pokemonsViews2);
-
-  console.log("pokemons", pokemons);
+  const [showLoading, setShowLoading] = useState(true);
 
   const paginadoNext = (e) => {
     e.preventDefault();
 
-    if (arregloPaginado.num2 > pokemons.length) {
+    if (arregloPaginado.num2 >= pokemons.length) {
       alert("there is no more Pokemons");
       return;
     }
@@ -55,23 +58,71 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllPokemons());
+    const timer = setTimeout(() => {
+      setShowLoading(false);
+    }, 2000);
+    if (pokemons.length === 0) dispatch(getAllPokemons());
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [dispatch]);
 
   return (
     <div className={style.home}>
       <Filter />
 
-      <div className={style.paginado}>
-        <button className={style.back} name="back" onClick={paginadoBack}>
-          Back
-        </button>
+      {pokemonsViews2.length === 1 ? null : (
+        <div className={style.containerPaginado}>
+          <div className={style.carga}>
+            {showLoading ? (
+              <div className={style.loading}>
+                <p>Loading...</p>
+                <img src={pikachu} alt="" />
+              </div>
+            ) : null}
+          </div>
+          <div className={style.buttons}>
+            <img
+              src={back}
+              alt=""
+              className={style.back}
+              name="back"
+              onClick={paginadoBack}
+            ></img>
+            <img
+              src={next}
+              alt=""
+              className={style.next}
+              name="next"
+              onClick={paginadoNext}
+            ></img>
+          </div>
+        </div>
+      )}
 
-        <button className={style.next} name="next" onClick={paginadoNext}>
-          Next
-        </button>
-      </div>
       <Cards pokemons={pokemonsViews2} />
+      {pokemonsViews2.length === 1 ? null : (
+        <div className={style.containerPaginado}>
+          <div className={style.carga}></div>
+          <div className={style.buttons}>
+            <img
+              src={back}
+              alt=""
+              className={style.back}
+              name="back"
+              onClick={paginadoBack}
+            ></img>
+            <img
+              src={next}
+              alt=""
+              className={style.next}
+              name="next"
+              onClick={paginadoNext}
+            ></img>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

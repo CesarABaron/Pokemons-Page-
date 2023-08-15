@@ -5,3 +5,9 @@
     justify-content: center;
     align-items: center;
 }
+
+
+.select option:checked {
+    background-color: rgb(250, 142, 142);
+   
+}

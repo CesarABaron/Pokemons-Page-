@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-import { deletePokemon } from "../../redux/actions";
+import { deletePokemon, getAllPokemons } from "../../redux/actions";
 import style from "./detailPage.module.css";
 import rockImage from "../../assets/images/inconsHd/rock.png";
 import bugImage from "../../assets/images/inconsHd/bug.png";
@@ -71,8 +71,12 @@ const DetailPage = () => {
   }, [id]);
 
   const deletePokemonHandler = () => {
-    dispacth(deletePokemon(id));
-    navigate("/home");
+    dispacth(deletePokemon(id)).then(() => {
+      dispacth(getAllPokemons());
+      navigate("/home");
+    });
+
+    // promesa de home
   };
 
   return (
@@ -119,7 +123,7 @@ const DetailPage = () => {
           {pokemons[0]?.id.length > 3 && (
             <div className={style.delete}>
               <button onClick={deletePokemonHandler}>Delete</button>
-              <Link to={`/create/${id}`}>
+              <Link to={`/edit/${id}`}>
                 <button>Update</button>
               </Link>
             </div>

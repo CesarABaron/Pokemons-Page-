@@ -1,10 +1,21 @@
 
-.button{background-color: #B52B25;
-  background-size: cover;
-  height: 33px;
-  width: 39px;
- background-image: url(../../assets/images/inconsHd/lupa.png);
-  margin-top: 1px;
+.button{
+height: 35px;
+background-size: 25px 25px;
+background-position: center;
+width: 35px;
+border-radius: 666px;
+background-repeat: no-repeat;
+  background-image: url(../../assets/images/inconsHd/search.png);
+  background-color: transparent;
+  border: none;
+  
+  margin-left: 15px;
+  }
+
+  .button:hover{
+    scale: 1.1;
+  
   }
 
 
@@ -15,8 +26,10 @@
   background-color: rgb(250, 201, 201);
 outline: none;
     border: 1px solid #B52B25;
+    border-radius: 15px;
   height: 29px;
   width: 270px;
+  
 
 }
 
@@ -25,6 +38,7 @@ select{
   margin: 8px;
   background-color: rgb(250, 201, 201);
   padding: 2px;
+
   
 }
 

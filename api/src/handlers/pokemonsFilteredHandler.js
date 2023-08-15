@@ -17,7 +17,7 @@ const getPokemonsFilteredHandler = async (req, res) => {
       const response2 = await getAllPokemonController();
       const response3 = await filterController(type, value, response2);
       if (response.length === 0 && value === "getAll") {
-        return res.status(200).json(response2);
+        return res.status(200).res(response2);
       } else if (response.length === 0) {
         return res.status(200).json(response3);
       }

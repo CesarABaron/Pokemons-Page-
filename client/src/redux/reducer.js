@@ -6,11 +6,15 @@ import {
   PAGINATEPOKEMON,
   DELETEPOKEMON,
   UPDATEPOKEMON,
+  GETPOKEMONBYID,
+  CLEARDETAIL,
 } from "../redux/actions";
 
 let inicialState = {
   pokemons: [],
   pokemonsViews2: [],
+  pokemonsById: [],
+  pokemonsById2: [],
 };
 
 function rootReducer(state = inicialState, actions) {
@@ -52,6 +56,19 @@ function rootReducer(state = inicialState, actions) {
     case UPDATEPOKEMON:
       return {
         ...state,
+      };
+
+    case GETPOKEMONBYID:
+      return {
+        ...state,
+        pokemonsById: actions.payload,
+        pokemonsById2: actions.payload,
+      };
+
+    case CLEARDETAIL:
+      return {
+        ...state,
+        pokemonsById: {},
       };
 
     default:

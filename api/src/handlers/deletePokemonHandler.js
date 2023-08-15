@@ -5,8 +5,9 @@ const {
 const deletePokemonHandler = async (req, res) => {
   try {
     const { id } = req.params;
-    await deletePokemonControler(id);
-    res.status(200).send("fue eliminado exitosamente");
+    const response = await deletePokemonControler(id);
+    console.log(response);
+    res.status(200).json(response);
   } catch (error) {
     res.status(400).json(error.message);
   }

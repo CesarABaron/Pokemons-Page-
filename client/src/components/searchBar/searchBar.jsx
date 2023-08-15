@@ -23,7 +23,7 @@ const SearchBar = () => {
         onChange={handleChange}
         value={input.name}
         name="name"
-        placeholder="Search Pokemon..."
+        placeholder="   Search Pokemon..."
       ></input>
       <div>
         <button

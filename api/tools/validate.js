@@ -19,15 +19,13 @@ const Validate = (array) => {
       id: pok.id ? pok.id : "Undefined",
       name: pok.name,
       image: pok.sprites.front_default,
-      hp: health,
+      health: health,
       attack: attack,
       defense: defense,
       types: types,
       createdInDb: false,
     };
   });
-
-  // colocar renderizado condicional en caso de no haber la inf para que no salga null !!
 
   return clear;
 };

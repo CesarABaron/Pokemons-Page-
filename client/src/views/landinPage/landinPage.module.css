@@ -5,19 +5,53 @@
 
 
 .landing{
-    /* background-image: url(../../assets/images/landingPage.jpg); */
-    background-image: url(../../assets/images/landingPage.jpg);
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        overflow-y: auto;
+    background-color: #961E1D;
         background-size: cover;
-        --color-text: #ffffff;
-            --color-background: #ff135a;
-            --color-outline: #ff145b80;
-            --color-shadow: #00000080;
-  
+        background-position: center center;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
 }
 
+.container {
+
+background-color: rgba(255, 255, 255, 0.8);
+    /* Fondo semitransparente */
+    height: 550px;
+    width: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.div1{
+    background-color: rgb(243, 230, 230);
+    position: absolute;
+    height: 500px;
+    width: 450px;
+    margin-bottom: 800px;
+}
+
+
+
+img{
+    height: 600px;
+    margin-left: 350px;
+    margin-top: -80px;   
+    position: absolute; 
+}
+
+button{
+    position: absolute;
+    margin-left: 5px;
+}
+
+
+h1{
+    margin-left: 80px;
+    font-size: 42px;
+    text-align: center;
+    
+}

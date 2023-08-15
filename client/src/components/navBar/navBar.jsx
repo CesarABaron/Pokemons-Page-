@@ -3,11 +3,13 @@ import SearchBar from "../searchBar/searchBar";
 import style from "./navBar.module.css";
 import { useDispatch } from "react-redux";
 import { getAllPokemons } from "../../redux/actions";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const isHomePage = location.pathname === "/home";
+  let pokemonsViews2 = useSelector((state) => state.pokemonsViews2);
 
   const getallPokemonsAgain = () => {
     dispatch(getAllPokemons());
@@ -23,9 +25,10 @@ const NavBar = () => {
       >
         Pokemon
       </h1>
+
       {location.pathname === "/home" && <SearchBar />}
       {location.pathname === "/home" && (
-        <NavLink className={style.navLink} to="/create/id">
+        <NavLink className={style.navLink} to="/create">
           <p> Create Pokemon</p>
         </NavLink>
       )}
@@ -35,10 +38,6 @@ const NavBar = () => {
           <p> Home</p>
         </NavLink>
       )}
-
-      <NavLink className={style.navLink} to="/about">
-        <p> About</p>
-      </NavLink>
     </div>
   );
 };

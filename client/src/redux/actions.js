@@ -7,6 +7,8 @@ export const FILTERPOKEMON = "FILTERPOKEMON";
 export const PAGINATEPOKEMON = "PAGINATEPOKEMON";
 export const DELETEPOKEMON = "DELETEPOKEMON";
 export const UPDATEPOKEMON = "UPDATEPOKEMON";
+export const GETPOKEMONBYID = "GETPOKEMONBYID";
+export const CLEARDETAIL = "CLEARDETAIL";
 
 export const getAllPokemons = () => {
   return async (dispatch) => {
@@ -86,7 +88,7 @@ export const deletePokemon = (id) => {
         `http://localhost:3001/pokemons/${id}`
       );
 
-      alert(response.data);
+      alert(response.data.message);
       return dispatch({
         type: "DELETEPOKEMON",
         payload: response.data,
@@ -105,7 +107,7 @@ export const updatePokemon = (id, body) => {
         body
       );
 
-      alert("se ha Modificado con exito");
+      alert(response.data);
       return dispatch({
         type: "UPDATEPOKEMON",
         payload: response.data,
@@ -113,5 +115,28 @@ export const updatePokemon = (id, body) => {
     } catch (error) {
       alert(error.response.data);
     }
+  };
+};
+
+export const getPokemonByid = (id) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
+      console.log("byid", response.data);
+      return dispatch({
+        type: "GETPOKEMONBYID",
+        payload: response.data,
+      });
+    } catch (error) {
+      alert(error.response.data);
+    }
+  };
+};
+
+export const clearDetail = () => {
+  return (dispatch) => {
+    return dispatch({
+      type: "CLEARDETAIL",
+    });
   };
 };
