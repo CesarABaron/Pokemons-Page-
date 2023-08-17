@@ -8,7 +8,7 @@ const deletePokemonControler = async (id) => {
     return { message: `The pokémon ${old.dataValues.name} whas eliminated` };
   }
 
-  throw Error("No se encontro Pokemon con este id");
+  throw Error("No pokemon found with this id");
 };
 
 module.exports = { deletePokemonControler };

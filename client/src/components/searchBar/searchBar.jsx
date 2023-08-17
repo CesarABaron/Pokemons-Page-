@@ -13,7 +13,11 @@ const SearchBar = () => {
   };
 
   const onSearch = (name) => {
-    dispatch(getPokemonByName(name));
+    if (input.name) {
+      dispatch(getPokemonByName(name));
+      return;
+    }
+    alert("at least one Pokemon");
   };
 
   return (

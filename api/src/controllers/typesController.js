@@ -13,9 +13,9 @@ const getTypesController = async () => {
       for (let i = 0; i < responseFiltered.length; i++) {
         Type.create({ name: responseFiltered[i] });
       }
-      console.log("La inf en la bd se ha creado correctamente");
+      console.log("The inf in the db has been created successfully");
     } else {
-      console.log("La inf en la bd ya esta cargada");
+      console.log("The inf in the bd is already loaded");
     }
   } catch (error) {
     return { error: error.message };

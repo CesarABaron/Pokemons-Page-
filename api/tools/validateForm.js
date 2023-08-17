@@ -10,7 +10,7 @@ const validateForm = async (req, res, next) => {
 
   if (!name) {
     return res.status(400).json({
-      error: " El nombre debe almenos tener una letra o ser de tipo String",
+      error: " The name must have at least one letter or be of type String",
     });
   } else if (typeof name !== "string") {
     return res.status(400).json({
@@ -25,34 +25,36 @@ const validateForm = async (req, res, next) => {
   if (!health || typeof health !== "number")
     return res
       .status(400)
-      .json({ error: "health debe tener almenos un dijito" });
+      .json({ error: "health must have at least one digit" });
   if (!image)
-    return res.status(400).json({ error: "Debes almenos subir una imagen" });
+    return res.status(400).json({ error: "You must at least upload a link" });
   const isUrlValid =
     /^(https?:\/\/)?(www\.)?[a-z0-9\-\.\/_]+\.(png|jpg|jpeg)$/i.test(image);
   if (!isUrlValid) {
     return res.status(400).json({
       error:
-        "El enlace proporcionado no es válido o no apunta a una imagen PNG o JPG",
+        "The provided link is invalid or does not point to a PNG or JPG image",
     });
   }
 
   if (!attack || typeof attack !== "number")
     return res
       .status(400)
-      .json({ error: "el ataque debe tener almenos un dijito" });
+      .json({ error: "the attack must have at least one digit" });
   if (!defense || typeof defense !== "number")
     return res
       .status(400)
-      .json({ error: "la defensa debe tener almenos un dijito" });
+      .json({ error: "the defense must have at least one digit" });
   if (type.length === 0 || !Array.isArray(type) || type.length > 2)
-    return res.status(400).json({ error: "Debe tener almenos un tipo" });
+    return res.status(400).json({ error: "Must have at least one type" });
 
   for (let i = 0; i < type.length; i++) {
     const validator = await Type.findOne({ where: { name: type[i] } });
 
     if (!validator) {
-      return res.status(400).json({ error: "El tipo de pokemon no existe" });
+      return res
+        .status(400)
+        .json({ error: "The type of pokemon does not exist" });
     }
   }
 

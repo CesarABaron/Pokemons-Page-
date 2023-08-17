@@ -110,3 +110,20 @@ border-radius: 0px 50px 50px 0px ;
   
 }
 
+
+
+.edit{
+    border-radius: 10px;
+    background-color: #c03028;
+    color:white;
+    padding: 5px;
+    
+}
+
+.delete1{
+    border-radius: 10px;
+    background-color: #c03028;
+    margin-right: 10px;
+    color: white;
+        padding: 5px;
+}

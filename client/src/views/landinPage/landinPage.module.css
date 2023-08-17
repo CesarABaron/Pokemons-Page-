@@ -4,54 +4,119 @@
 }
 
 
-.landing{
+ .landing{
     background-color: #961E1D;
         background-size: cover;
-        background-position: center center;
-        background-attachment: fixed;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-}
+        overflow: hidden
+} 
 
-.container {
+ .containerHome {
 
-background-color: rgba(255, 255, 255, 0.8);
-    /* Fondo semitransparente */
+background-color: #ffffff;
+
     height: 550px;
-    width: 70%;
+    width: 1000px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 20px 20px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+} 
+
+
+
+
+
+
+.left h1 {
+    margin-top: 70px;
+font-size: 50px;
+color: #961E1D;
+text-align: center;
+
 }
 
-.div1{
-    background-color: rgb(243, 230, 230);
+
+
+.right{
+    background-color: transparent;
+    width: 500px;
+}
+
+
+.right img{
+    height: 750px;
+    overflow: auto;
+    background-color: transparent;
+position: relative;
+right: 350px;
+bottom: 130px;
+z-index: 0;
+
+}
+
+
+.tecnologies{
+    display: flex;
+}
+
+
+.tecnologiesLogo{
+    margin-top: 40px;
+    height: 90px;
+    margin-left: 10px;
+}
+
+
+.left button {
+background-color: #ffffff;
+padding: 1em 2em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #951E1D;
+    transition: all 1000ms;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    outline: 2px solid #951E1D;
+    z-index: 1;
+  
+}
+
+.left button:hover {
+color: #ffffff;
+    transform: scale(1.1);
+    outline: 2px solid #ffffff;
+    box-shadow: 4px 5px 17px -4px #060707;
+}
+
+
+.left button::before {
+    content: "";
     position: absolute;
-    height: 500px;
-    width: 450px;
-    margin-bottom: 800px;
+    left: -50px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #951E1D;
+    transform: skewX(45deg);
+    z-index: -1;
+    transition: width 1000ms;
 }
 
 
-
-img{
-    height: 600px;
-    margin-left: 350px;
-    margin-top: -80px;   
-    position: absolute; 
-}
-
-button{
-    position: absolute;
-    margin-left: 5px;
+.left button:hover::before {
+    width: 250%;
 }
 
 
-h1{
-    margin-left: 80px;
-    font-size: 42px;
-    text-align: center;
-    
+.botonR{
+    margin-left: 140px;
 }
+

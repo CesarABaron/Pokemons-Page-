@@ -122,9 +122,11 @@ const DetailPage = () => {
           </div>
           {pokemons[0]?.id.length > 3 && (
             <div className={style.delete}>
-              <button onClick={deletePokemonHandler}>Delete</button>
+              <button className={style.delete1} onClick={deletePokemonHandler}>
+                Delete Pokemon
+              </button>
               <Link to={`/edit/${id}`}>
-                <button>Update</button>
+                <button className={style.edit}>Edit Pokemon</button>
               </Link>
             </div>
           )}
