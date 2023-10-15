@@ -17,7 +17,6 @@ const Filter = () => {
   const pokemons = useSelector((state) => state.pokemons);
 
   const handleChange = (e) => {
-    console.log("valie", e.target.value);
     const selectedValue = e.target.value;
 
     setSelectedType(selectedValue);

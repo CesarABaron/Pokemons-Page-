@@ -11,7 +11,7 @@ import style from "./createPokemon.module.css";
 
 const CreatePokemon = () => {
   const { id } = useParams();
-  console.log("params", id);
+
   const dispatch = useDispatch();
 
   const [input, setInput] = useState({

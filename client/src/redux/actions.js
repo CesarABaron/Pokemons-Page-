@@ -55,7 +55,6 @@ export const postPokemon = (pokemon) => {
 };
 
 export const filterPokemon = (key, value, body) => {
-  console.log("key", key, "value", value);
   return async (dispatch) => {
     const params = { [key]: value };
     try {
@@ -122,7 +121,7 @@ export const getPokemonByid = (id) => {
   return async (dispatch) => {
     try {
       const response = await axios.get(`http://localhost:3001/pokemons/${id}`);
-      console.log("byid", response.data);
+
       return dispatch({
         type: "GETPOKEMONBYID",
         payload: response.data,
